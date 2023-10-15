@@ -16,7 +16,7 @@ in {
     programs = {
       sway = {
         enable = true;
-        extraPackages = with pkgs; [ swaylock swayidle dmenu ];
+        extraPackages = with pkgs; [swaylock swayidle dmenu];
         wrapperFeatures = {
           base = true;
           gtk = true;
@@ -96,7 +96,7 @@ in {
       xserver = {
         enable = true;
         layout = "fr";
-        excludePackages = [ pkgs.xterm ];
+        excludePackages = [pkgs.xterm];
 
         displayManager.gdm = {
           enable = true;
