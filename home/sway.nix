@@ -156,6 +156,7 @@ in {
         height = 30;
         output = [
           "eDP-1"
+          "HDMI-A-1"
         ];
         modules-left = ["sway/workspaces" "sway/mode"];
         modules-center = [];
@@ -171,34 +172,6 @@ in {
         ];
         "battery" = battery;
         "tray" = tray;
-        "sway/workspaces" = sway_workspaces;
-        "cpu" = cpu;
-        "memory" = memory;
-        "backlight" = backlight;
-        "bluetooth" = bluetooth;
-        "idle_inhibitor" = idle_inhibitor;
-        "network" = network;
-        "pulseaudio" = pulseaudio;
-      };
-      secondBar = {
-        layer = "top";
-        position = "top";
-        height = 30;
-        output = [
-          "HDMI-A-1"
-        ];
-        modules-left = ["sway/workspaces" "sway/mode"];
-        modules-center = [];
-        modules-right = [
-          "idle_inhibitor"
-          "cpu"
-          "memory"
-          "battery"
-          "pulseaudio"
-          "backlight"
-          "clock"
-        ];
-        "battery" = battery;
         "sway/workspaces" = sway_workspaces;
         "cpu" = cpu;
         "memory" = memory;
