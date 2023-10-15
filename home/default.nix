@@ -8,7 +8,6 @@
   desktopPkgs = with pkgs; [
     ungoogled-chromium
     firefox
-    rambox
     signal-desktop
     spotify
     discord
@@ -39,8 +38,10 @@
     unzip
   ];
 in {
-  services.network-manager-applet.enable = true;
-  services.blueman-applet.enable = true;
+  services = {
+    network-manager-applet.enable = true;
+    blueman-applet.enable = true;
+  };
 
   home.stateVersion = "23.05";
 
