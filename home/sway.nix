@@ -305,6 +305,7 @@ in {
         "${modifier}+s" = "exec ${terminal} -e ${pkgs.bottom}/bin/btm";
         "${modifier}+Shift+l" = "exec systemctl suspend";
         "${modifier}+Shift+s" = "exec ${takeScreenArea}/bin/take-screen";
+        "XF86Launch2" = "exec ${takeScreenArea}/bin/take-screen";
         "${modifier}+Shift+return" = "exec chromium";
         "${modifier}+space" = "exec wofi --show drun";
 

@@ -97,9 +97,9 @@ in {
         enable = true;
         layout = "fr";
         excludePackages = [pkgs.xterm];
-
-        displayManager.gdm = {
+        displayManager.sddm = {
           enable = true;
+          wayland.enable = true;
         };
       };
     };
