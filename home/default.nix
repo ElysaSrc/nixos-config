@@ -5,6 +5,10 @@
   ...
 }: let
   # Define installed programs in a cleaner way
+  jb_plugins = ide: pkgs.jetbrains.plugins.addPlugins ide [ 
+    "17718" # GitHub Copilot
+  ];
+
   desktopPkgs = with pkgs; [
     ungoogled-chromium
     firefox
@@ -25,11 +29,11 @@
     ])
     ++ (with pkgs.jetbrains; [
       datagrip
-      rider
-      goland
-      idea-ultimate
-      rust-rover
-      webstorm
+      (jb_plugins rider)
+      (jb_plugins goland)
+      (jb_plugins idea-ultimate)
+      (jb_plugins rust-rover)
+      (jb_plugins webstorm)
     ]);
 
   otherPkgs = with pkgs; [
@@ -83,6 +87,12 @@ in {
           };
           condition = "gitdir:~/Dev/GitHub/";
         }
+      ];
+
+      ignores = [
+        ".envrc"
+        ".vscode/settings.json"
+        ".direnv"
       ];
 
       extraConfig = {

@@ -92,14 +92,14 @@ in {
           dns = {bind_hosts = ["127.0.0.1"];};
         };
       };
+    };
 
-      xserver = {
-        enable = true;
-        layout = "fr";
-        excludePackages = [pkgs.xterm];
-        displayManager.sddm = {
-          enable = true;
-          wayland.enable = true;
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+          user = "elyse";
         };
       };
     };

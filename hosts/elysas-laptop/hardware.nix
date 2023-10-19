@@ -35,7 +35,6 @@
   };
 
   boot = {
-    plymouth.enable = true;
     tmp.cleanOnBoot = true;
 
     bootspec.enable = true;
@@ -68,16 +67,10 @@
         "tpm_crb"
         "tpm_tis"
         "tpm_tis_core"
+        "amdgpu"
       ];
       luks.devices."cryptroot".device = "/dev/disk/by-uuid/8295c5b4-809b-49db-bdc1-1fdf7d48a7a8";
     };
-
-    kernelParams = [
-      "quiet"
-      "loglevel=3"
-      "systemd.show_status=auto"
-      "rd.udev.log_level=3"
-    ];
   };
 
   fileSystems = {
