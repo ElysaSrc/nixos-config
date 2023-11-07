@@ -16,10 +16,12 @@ in {
       enable = true;
       storageDriver = "overlay2";
       autoPrune.enable = true;
+      daemon.settings = {
+        features = {
+          buildkit = true;
+        };
+      };
     };
-    environment.systemPackages = with pkgs; [
-      docker-compose
-    ];
     users.groups.docker.members = ["elyse"];
   };
 }

@@ -3,7 +3,9 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  colors = import ../common/colors.nix;
+in {
   home.packages = with pkgs; [
     fd
   ];
@@ -63,7 +65,7 @@
 
       font = {
         normal = {
-          family = "JetBrains Mono";
+          family = "JetBrainsMono Nerd Font Mono";
           style = "Regular";
         };
         size = 13;
@@ -78,72 +80,44 @@
         };
       };
 
-      colors = {
+      colors = let
+        default_scheme = {
+          black = colors.black;
+          red = colors.red;
+          green = colors.green;
+          yellow = colors.yellow;
+          blue = colors.blue;
+          magenta = colors.magenta;
+          cyan = colors.cyan;
+          white = colors.white;
+        };
+      in {
         primary = {
-          background = "#2e3440";
-          foreground = "#d8dee9";
-          dim_foreground = "#a5abb6";
+          background = colors.background;
+          foreground = colors.foreground;
+          dim_foreground = colors.white;
         };
 
         cursor = {
-          text = "#2e3440";
-          cursor = "#d8dee9";
-        };
-
-        vi_mode_cursor = {
-          text = "#2e3440";
-          cursor = "#d8dee9";
+          text = colors.foreground;
+          cursor = colors.foreground;
         };
 
         selection = {
           text = "CellForeground";
-          background = "#4c566a";
-        };
-
-        footer_bar = {
-          background = "#434c5e";
-          foreground = "#d8dee9";
+          background = colors.black;
         };
 
         search = {
           matches = {
             foreground = "CellBackground";
-            background = "#88c0d0";
+            background = colors.yellow;
           };
         };
 
-        normal = {
-          black = "#3b4252";
-          red = "#bf616a";
-          green = "#a3be8c";
-          yellow = "#ebcb8b";
-          blue = "#81a1c1";
-          magenta = "#b48ead";
-          cyan = "#88c0d0";
-          white = "#e5e9f0";
-        };
-
-        bright = {
-          black = "#4c566a";
-          red = "#bf616a";
-          green = "#a3be8c";
-          yellow = "#ebcb8b";
-          blue = "#81a1c1";
-          magenta = "#b48ead";
-          cyan = "#8fbcbb";
-          white = "#eceff4";
-        };
-
-        dim = {
-          black = "#373e4d";
-          red = "#94545d";
-          green = "#809575";
-          yellow = "#b29e75";
-          blue = "#68809a";
-          magenta = "#8c738c";
-          cyan = "#6d96a5";
-          white = "#aeb3bb";
-        };
+        normal = default_scheme;
+        bright = default_scheme;
+        dim = default_scheme;
       };
     };
   };

@@ -22,6 +22,10 @@ in {
           gtk = true;
         };
         extraSessionCommands = ''
+          export _JAVA_AWT_WM_NONREPARENTING=1
+          export MOZ_ENABLE_WAYLAND=1
+          export QT_QPA_PLATFORM=wayland
+          export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
           eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh);
           export SSH_AUTH_SOCK;
         '';
@@ -92,6 +96,12 @@ in {
           dns = {bind_hosts = ["127.0.0.1"];};
         };
       };
+
+      xserver = {
+        enable = true;
+        layout = "fr";
+        excludePackages = [pkgs.xterm];
+      };
     };
 
     services.greetd = {
@@ -99,7 +109,7 @@ in {
       settings = {
         default_session = {
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
-          user = "elyse";
+          user = "greeter";
         };
       };
     };

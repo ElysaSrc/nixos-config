@@ -6,7 +6,7 @@
 
 window#waybar {
   background: transparent;
-  color: #ffffff;
+  color: #d4be98;
   transition-property: background-color;
   transition-duration: .5s;
 }
@@ -23,7 +23,7 @@ window#waybar.hidden {
   margin: 2px;
   padding-left: 8px;
   padding-right: 8px;
-  background-color: rgba(0,0,0,0.3);
+  background-color: #1d2021;
   font-size:14px;
   font-weight: bold;
 }
@@ -36,7 +36,7 @@ button {
 
 button:hover {
   background: inherit;
-  border-top: 2px solid #bf616a;
+  border-top: 2px solid #d3869b;
 }
 
 #workspaces button {
@@ -45,8 +45,8 @@ button:hover {
 
 #workspaces button.focused {
   background-color: rgba(0,0,0,0.3);
-  color:#bf616a;
-  border-top: 2px solid #bf616a;
+  color:#d3869b;
+  border-top: 2px solid #d3869b;
 }
 
 #workspaces button.urgent {
@@ -55,7 +55,7 @@ button:hover {
 
 #mode {
   background-color: #64727D;
-  border-bottom: 3px solid #ffffff;
+  border-bottom: 3px solid #d4be98;
 }
 
 #clock,
@@ -79,7 +79,7 @@ button:hover {
   padding-left: 4px;
   padding-right: 4px;
   background-color: rgba(0,0,0,0.3);
-  color: #ffffff;
+  color: #d4be98;
 }
 
 .modules-left > widget:first-child > #workspaces {
@@ -100,20 +100,20 @@ button:hover {
 }
 
 #battery.charging, #battery.plugged {
-  color: #ffffff;
-  background-color: #26A65B;
+  color: #d4be98;
+  background-color: #a9b665;
 }
 
 @keyframes blink {
   to {
-    background-color: #ffffff;
+    background-color: #d4be98;
     color: #000000;
   }
 }
 
 #battery.warning:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
+  background-color: #ea6962;
+  color: #d4be98;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -122,8 +122,8 @@ button:hover {
 }
 
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
+  background-color: #ea6962;
+  color: #d4be98;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -144,8 +144,8 @@ label:focus {
 }
 
 #idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
+  background-color: #d4be98;
+  color: #1d2021;
 }
 
 #tray > .passive {

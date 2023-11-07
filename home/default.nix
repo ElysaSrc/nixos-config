@@ -4,10 +4,14 @@
   pkgs,
   ...
 }: let
+  # Import packages from packages folder
+  # satty = pkgs.callPackage ../packages/satty.nix { };
+
   # Define installed programs in a cleaner way
-  jb_plugins = ide: pkgs.jetbrains.plugins.addPlugins ide [ 
-    "17718" # GitHub Copilot
-  ];
+  jb_plugins = ide:
+    pkgs.jetbrains.plugins.addPlugins ide [
+      "17718" # GitHub Copilot
+    ];
 
   desktopPkgs = with pkgs; [
     ungoogled-chromium
@@ -20,6 +24,7 @@
     skanpage
     gimp
     slack
+    # satty
   ];
 
   developmentPkgs =
@@ -60,6 +65,11 @@ in {
     '';
   };
 
+  home.file.".config/starship.toml" = {
+    enable = true;
+    source = ./configs/starship.toml;
+  };
+
   imports = [
     ./sway.nix
     ./shell.nix
@@ -76,7 +86,6 @@ in {
     };
     git = {
       enable = true;
-
       includes = [
         {
           contents = {
@@ -88,13 +97,11 @@ in {
           condition = "gitdir:~/Dev/GitHub/";
         }
       ];
-
       ignores = [
         ".envrc"
         ".vscode/settings.json"
         ".direnv"
       ];
-
       extraConfig = {
         init.defaultBranch = "main";
         core.editor = "code --wait";

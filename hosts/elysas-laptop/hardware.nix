@@ -35,8 +35,9 @@
   };
 
   boot = {
+    consoleLogLevel = 0;
     tmp.cleanOnBoot = true;
-
+    plymouth.enable = true;
     bootspec.enable = true;
 
     loader = {
@@ -55,9 +56,18 @@
 
     kernelModules = ["kvm-amd"];
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
 
     initrd = {
       systemd.enable = true;
+      verbose = false;
       availableKernelModules = [
         "nvme"
         "xhci_pci"

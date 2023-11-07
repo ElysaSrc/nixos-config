@@ -4,12 +4,16 @@
   pkgs,
   ...
 }: let
+  colors = import ../common/colors.nix;
+
+  gtk_theme = pkgs.callPackage ../common/gtk-theme.nix {};
+
   takeScreenArea = pkgs.writeShellScriptBin "take-screen" ''
     ${pkgs.grim}/bin/grim -t png -g "$(${pkgs.slurp}/bin/slurp -d)" - | ${pkgs.wl-clipboard}/bin/wl-copy
   '';
 
   swaylockTheme = pkgs.writeShellScriptBin "swaylock" ''
-    ${pkgs.swaylock}/bin/swaylock -i ${./wallpaper.png} -fF
+    ${pkgs.swaylock}/bin/swaylock -i ${../common/wallpaper.png} -fF
   '';
 in {
   services = {
@@ -24,9 +28,9 @@ in {
       defaultTimeout = 15000;
       font = "JetBrainsMono Nerd Font Mono 13";
       borderSize = 2;
-      backgroundColor = "#2E3440";
-      borderColor = "#5E81AC";
-      textColor = "#D8DEE9";
+      backgroundColor = colors.background;
+      borderColor = colors.magenta;
+      textColor = colors.foreground;
     };
   };
 
@@ -39,8 +43,8 @@ in {
     };
 
     theme = {
-      name = "Nordic";
-      package = pkgs.nordic;
+      name = "Pop-dark";
+      package = gtk_theme;
     };
 
     cursorTheme = {
@@ -242,41 +246,41 @@ in {
       modifier = modifier;
 
       colors = {
-        background = "";
+        background = colors.background;
         focused = {
-          background = "#2E3440";
-          border = "#5E81AC";
-          childBorder = "#5E81AC";
-          indicator = "#88C0D0";
-          text = "#D8DEE9";
+          background = colors.background;
+          border = colors.magenta;
+          childBorder = colors.magenta;
+          indicator = colors.white;
+          text = colors.foreground;
         };
         focusedInactive = {
-          background = "#2E3440";
-          border = "#81A1C1";
-          childBorder = "#81A1C1";
-          indicator = "#88C0D0";
-          text = "#D8DEE9";
+          background = colors.background;
+          border = colors.black;
+          childBorder = colors.black;
+          indicator = colors.white;
+          text = colors.foreground;
         };
         placeholder = {
-          background = "#2E3440";
+          background = colors.background;
           border = "#000000";
           childBorder = "#0c0c0c";
           indicator = "#000000";
           text = "#ffffff";
         };
         unfocused = {
-          background = "#2E3440";
-          border = "#3B4252";
-          childBorder = "#3B4252";
-          indicator = "#4C566A";
-          text = "#D8DEE9";
+          background = colors.background;
+          border = colors.black;
+          childBorder = colors.black;
+          indicator = colors.white;
+          text = colors.foreground;
         };
         urgent = {
-          background = "#2E3440";
-          border = "#BF616A";
-          childBorder = "#BF616A";
-          indicator = "#D08770";
-          text = "#D8DEE9";
+          background = colors.background;
+          border = colors.red;
+          childBorder = colors.red;
+          indicator = colors.white;
+          text = colors.foreground;
         };
       };
 
@@ -294,7 +298,7 @@ in {
 
       bars = [];
 
-      output = {"*" = {bg = "${./wallpaper.png} fill";};};
+      output = {"*" = {bg = "${../common/wallpaper.png} fill";};};
 
       keybindings = {
         "${modifier}+return" = "exec ${terminal}";
