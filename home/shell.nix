@@ -57,6 +57,35 @@ in {
     };
   };
 
+  programs.termite = {
+    enable = true;
+    font = "JetBrainsMono Nerd Font Mono 13";
+
+    backgroundColor = colors.background;
+    foregroundColor = colors.foreground;
+    cursorColor = colors.foreground;
+
+    colorsExtra = ''
+      color0 = ${colors.black}
+      color1 = ${colors.red}
+      color2 = ${colors.green}
+      color3 = ${colors.yellow}
+      color4 = ${colors.blue}
+      color5 = ${colors.magenta}
+      color6 = ${colors.cyan}
+      color7 = ${colors.white}
+
+      color8 = ${colors.black}
+      color9 = ${colors.red}
+      color10 = ${colors.green}
+      color11 = ${colors.yellow}
+      color12 = ${colors.blue}
+      color13 = ${colors.magenta}
+      color14 = ${colors.cyan}
+      color15 = ${colors.white}
+    '';
+  };
+
   programs.alacritty = {
     enable = true;
     settings = {
