@@ -14,8 +14,6 @@
     ];
 
   desktopPkgs = with pkgs; [
-    ungoogled-chromium
-    firefox
     signal-desktop
     spotify
     discord

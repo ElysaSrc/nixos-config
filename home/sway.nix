@@ -310,7 +310,7 @@ in {
         "${modifier}+Shift+l" = "exec systemctl suspend";
         "${modifier}+Shift+s" = "exec ${takeScreenArea}/bin/take-screen";
         "XF86Launch2" = "exec ${takeScreenArea}/bin/take-screen";
-        "${modifier}+Shift+return" = "exec chromium";
+        "${modifier}+Shift+return" = "exec firefox";
         "${modifier}+space" = "exec wofi --show drun";
 
         "XF86MonBrightnessUp" = "exec lightctl up";
