@@ -4,9 +4,6 @@
   pkgs,
   ...
 }: let
-  # Import packages from packages folder
-  # satty = pkgs.callPackage ../packages/satty.nix { };
-
   # Define installed programs in a cleaner way
   jb_plugins = ide:
     pkgs.jetbrains.plugins.addPlugins ide [
@@ -14,6 +11,8 @@
     ];
 
   desktopPkgs = with pkgs; [
+    ungoogled-chromium
+    firefox
     signal-desktop
     spotify
     discord
@@ -21,8 +20,8 @@
     system-config-printer
     skanpage
     gimp
+    inkscape
     slack
-    # satty
   ];
 
   developmentPkgs =

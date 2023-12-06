@@ -6,8 +6,6 @@
 }: let
   colors = import ../common/colors.nix;
 
-  gtk_theme = pkgs.callPackage ../common/gtk-theme.nix {};
-
   takeScreenArea = pkgs.writeShellScriptBin "take-screen" ''
     ${pkgs.grim}/bin/grim -t png -g "$(${pkgs.slurp}/bin/slurp -d)" - | ${pkgs.wl-clipboard}/bin/wl-copy
   '';
@@ -21,7 +19,7 @@ in {
     avizo.enable = true;
     kdeconnect = {
       enable = true;
-    };
+    };  
 
     mako = {
       enable = true;
@@ -34,6 +32,15 @@ in {
     };
   };
 
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
+  };
+
   gtk = {
     enable = true;
 
@@ -43,8 +50,8 @@ in {
     };
 
     theme = {
-      name = "Pop-dark";
-      package = gtk_theme;
+      name = "Adwaita-dark";
+      package = pkgs.gnome.gnome-themes-extra;
     };
 
     cursorTheme = {
@@ -62,6 +69,12 @@ in {
       Settings = ''
         gtk-application-prefer-dark-theme=1
       '';
+    };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
     };
   };
 
@@ -293,6 +306,7 @@ in {
         "*" = {
           xkb_layout = "fr";
           xkb_numlock = "enabled";
+          xkb_variant = "oss";
         };
       };
 
@@ -310,7 +324,7 @@ in {
         "${modifier}+Shift+l" = "exec systemctl suspend";
         "${modifier}+Shift+s" = "exec ${takeScreenArea}/bin/take-screen";
         "XF86Launch2" = "exec ${takeScreenArea}/bin/take-screen";
-        "${modifier}+Shift+return" = "exec firefox";
+        "${modifier}+Shift+return" = "exec chromium";
         "${modifier}+space" = "exec wofi --show drun";
 
         "XF86MonBrightnessUp" = "exec lightctl up";

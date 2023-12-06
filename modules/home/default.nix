@@ -101,9 +101,17 @@ in {
         enable = true;
         layout = "fr";
         excludePackages = [pkgs.xterm];
+        displayManager = {
+          defaultSession = "sway";
+          gdm = {
+            enable = true;
+            wayland = true;
+          };
+        };
       };
     };
 
+    /*
     services.greetd = {
       enable = true;
       settings = {
@@ -113,6 +121,7 @@ in {
         };
       };
     };
+    */
 
     networking.networkmanager = {
       enable = true;
