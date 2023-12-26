@@ -16,6 +16,7 @@ in {
     programs = {
       sway = {
         enable = true;
+        package = pkgs.swayfx;
         extraPackages = with pkgs; [swaylock swayidle dmenu];
         wrapperFeatures = {
           base = true;

@@ -26,6 +26,8 @@
     vlc
     libsForQt5.kdenlive
     obs-studio
+    gnome.file-roller
+    tor-browser-bundle-bin
   ];
 
   developmentPkgs =

@@ -405,6 +405,14 @@ in {
       titlebar_padding 1
       titlebar_border_thickness 0
 
+      blur enable
+      blur_passes 2
+      blur_radius 2
+      shadows enable
+      corner_radius 10
+      shadow_blur_radius 7
+      default_dim_inactive 0.3
+
       workspace 1
       exec ${terminal}
     '';
