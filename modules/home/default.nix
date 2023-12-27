@@ -51,7 +51,7 @@ in {
           };
           GTK = {
             application_prefer_dark_theme = true;
-            theme_name = "Adwaita";
+            theme_name = "Adwaita-dark";
             icon_theme_name = "Papirus-Dark";
             font_name = "JetBrainsMono Nerd Font Mono 13";
           };

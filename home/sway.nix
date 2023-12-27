@@ -27,7 +27,7 @@ in {
       font = "JetBrainsMono Nerd Font Mono 13";
       borderSize = 2;
       backgroundColor = colors.background;
-      borderColor = colors.magenta;
+      borderColor = colors.blue;
       textColor = colors.foreground;
     };
   };
@@ -170,7 +170,7 @@ in {
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
+        height = 38;
         output = [
           "eDP-1"
           "HDMI-A-1"
@@ -184,8 +184,8 @@ in {
           "battery"
           "pulseaudio"
           "backlight"
-          "tray"
           "clock"
+          "tray"
         ];
         "battery" = battery;
         "tray" = tray;
@@ -277,9 +277,9 @@ in {
         background = colors.background;
         focused = {
           background = colors.background;
-          border = colors.magenta;
-          childBorder = colors.magenta;
-          indicator = colors.white;
+          border = "#a89984";
+          childBorder = "#a89984";
+          indicator = "#ea6962";
           text = colors.foreground;
         };
         focusedInactive = {
@@ -327,9 +327,7 @@ in {
 
       bars = [];
 
-      /*
-      output = {"*" = {bg = "${../common/wallpaper.png} fill";};};
-      */
+      output = {"*" = {bg = "${../common/wallpaper.png} fill";};};      
 
       keybindings = {
         "${modifier}+return" = "exec ${terminal}";
@@ -399,17 +397,19 @@ in {
 
     extraConfig = ''
       seat seat0 xcursor_theme "${config.gtk.cursorTheme.name}"
-      default_border pixel 2
-      default_floating_border pixel 2
+      default_border pixel 3
+      default_floating_border pixel 3
       font pango:monospace 0
       titlebar_padding 1
       titlebar_border_thickness 0
 
+      layer_effects "waybar" blur enable; shadows enable
+
       blur enable
       blur_passes 2
-      blur_radius 2
+      blur_radius 3
       shadows enable
-      corner_radius 10
+      corner_radius 8
       shadow_blur_radius 7
       default_dim_inactive 0.3
 
