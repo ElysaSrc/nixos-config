@@ -25,7 +25,7 @@ in {
         experimental-features = nix-command flakes
       '';
     };
-    
+
     time.timeZone = "Europe/Paris";
 
     programs.zsh.enable = true;

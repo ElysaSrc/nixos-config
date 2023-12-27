@@ -31,7 +31,7 @@ in {
           export SSH_AUTH_SOCK;
         '';
       };
-      
+
       dconf.enable = true;
 
       thunar = {
@@ -51,9 +51,9 @@ in {
           };
           GTK = {
             application_prefer_dark_theme = true;
-            theme = "Adwaita";
-            iconTheme = "Papirus-Dark";
-            fontName = "JetBrainsMono Nerd Font Mono 13";
+            theme_name = "Adwaita";
+            icon_theme_name = "Papirus-Dark";
+            font_name = "JetBrainsMono Nerd Font Mono 13";
           };
         };
       };
@@ -61,6 +61,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       gnome.seahorse
+      papirus-icon-theme
     ];
 
     xdg.portal = {
@@ -119,12 +120,12 @@ in {
       greetd = let
         wrappedGreeter = let
           cfg = config.programs.regreet;
-        in pkgs.writeShellScriptBin "wrappedGreeter" ''
-          export XKB_DEFAULT_LAYOUT=fr
-          export XKB_DEFAULT_VARIANT=,nodeadkeys
-          
-          exec ${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}
-        '';
+        in
+          pkgs.writeShellScriptBin "wrappedGreeter" ''
+            export XKB_DEFAULT_LAYOUT=fr
+            export XKB_DEFAULT_VARIANT=oss
+            exec ${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}
+          '';
       in {
         enable = true;
         settings = {
