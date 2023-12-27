@@ -90,22 +90,31 @@
         "tpm_tis_core"
         "amdgpu"
       ];
-      luks.devices."cryptroot".device = "/dev/disk/by-uuid/8295c5b4-809b-49db-bdc1-1fdf7d48a7a8";
+      luks.devices = {
+        "cryptroot".device = "/dev/disk/by-uuid/f7d46ae8-af45-48fa-b2b1-e21849fd8405";
+        "cryptdata".device = "/dev/disk/by-uuid/46911308-e04a-4ed6-b537-ffb96e6877d1";
+      };
     };
   };
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/6506e074-e4f0-4971-89a0-8447f620f827";
+      device = "/dev/disk/by-uuid/c4c05f1b-993a-425e-8cd3-8ae10be79945";
       fsType = "btrfs";
     };
+    "/home" = { 
+      device = "/dev/disk/by-uuid/d3a05041-7994-4d2f-9b45-d2fc679ad5a2";
+      fsType = "btrfs";
+      options = [ "subvol=home" "compress=zstd" ];
+    };
+    "/nix" = {
+      device = "/dev/disk/by-uuid/d3a05041-7994-4d2f-9b45-d2fc679ad5a2";
+      fsType = "btrfs";
+      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+    };
     "/boot" = {
-      device = "/dev/disk/by-uuid/EBCD-57A0";
+      device = "/dev/disk/by-uuid/C442-C54D";
       fsType = "vfat";
     };
   };
-
-  swapDevices = [
-    {device = "/dev/disk/by-uuid/ff64726e-08d0-4af6-80af-6f1a6259df6c";}
-  ];
 }
