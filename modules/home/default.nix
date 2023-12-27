@@ -31,13 +31,31 @@ in {
           export SSH_AUTH_SOCK;
         '';
       };
+      
       dconf.enable = true;
+
       thunar = {
         enable = true;
         plugins = with pkgs.xfce; [
           thunar-archive-plugin
           thunar-volman
         ];
+      };
+
+      regreet = {
+        enable = true;
+        settings = {
+          background = {
+            path = ../../common/wallpaper.png;
+            fit = "Cover";
+          };
+          GTK = {
+            application_prefer_dark_theme = true;
+            theme = "Adwaita";
+            iconTheme = "Papirus-Dark";
+            fontName = "JetBrainsMono Nerd Font Mono 13";
+          };
+        };
       };
     };
 
@@ -98,17 +116,26 @@ in {
         };
       };
 
+      greetd = let
+        wrappedGreeter = let
+          cfg = config.programs.regreet;
+        in pkgs.writeShellScriptBin "wrappedGreeter" ''
+          export XKB_DEFAULT_LAYOUT=fr
+          export XKB_DEFAULT_VARIANT=,nodeadkeys
+          
+          exec ${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}
+        '';
+      in {
+        enable = true;
+        settings = {
+          default_session.command = "${pkgs.dbus}/bin/dbus-run-session ${lib.getExe wrappedGreeter}";
+        };
+      };
+
       xserver = {
         enable = true;
         layout = "fr";
         excludePackages = [pkgs.xterm];
-        displayManager = {
-          defaultSession = "sway";
-          gdm = {
-            enable = true;
-            wayland = true;
-          };
-        };
       };
     };
 
