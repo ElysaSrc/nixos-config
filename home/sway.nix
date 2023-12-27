@@ -327,7 +327,7 @@ in {
 
       bars = [];
 
-      output = {"*" = {bg = "${../common/wallpaper.png} fill";};};      
+      output = {"*" = {bg = "${../common/wallpaper.png} fill";};};
 
       keybindings = {
         "${modifier}+return" = "exec ${terminal}";
@@ -411,7 +411,6 @@ in {
       shadows enable
       corner_radius 8
       shadow_blur_radius 7
-      default_dim_inactive 0.3
 
       workspace 1
       exec ${terminal}

@@ -61,7 +61,7 @@ in {
     enable = true;
     settings = {
       env = {TERM = "xterm-256color";};
-      window = {opacity = 0.60;};
+      window = {opacity = 0.80;};
 
       font = {
         normal = {
@@ -93,7 +93,7 @@ in {
         };
       in {
         primary = {
-          background = "#151515";
+          background = "#1d2021";
           foreground = colors.foreground;
           dim_foreground = colors.white;
         };

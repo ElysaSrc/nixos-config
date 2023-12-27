@@ -102,15 +102,15 @@
       device = "/dev/disk/by-uuid/c4c05f1b-993a-425e-8cd3-8ae10be79945";
       fsType = "btrfs";
     };
-    "/home" = { 
+    "/home" = {
       device = "/dev/disk/by-uuid/d3a05041-7994-4d2f-9b45-d2fc679ad5a2";
       fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd" ];
+      options = ["subvol=home" "compress=zstd"];
     };
     "/nix" = {
       device = "/dev/disk/by-uuid/d3a05041-7994-4d2f-9b45-d2fc679ad5a2";
       fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+      options = ["subvol=nix" "compress=zstd" "noatime"];
     };
     "/boot" = {
       device = "/dev/disk/by-uuid/C442-C54D";
