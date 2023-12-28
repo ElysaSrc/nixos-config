@@ -117,4 +117,5 @@
       fsType = "vfat";
     };
   };
+  swapDevices = [ { device = "/swapfile"; } ];
 }

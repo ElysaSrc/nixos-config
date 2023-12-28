@@ -51,6 +51,12 @@
     swww
   ];
 in {
+  imports = [
+    ./sway.nix
+    ./shell.nix
+    ./neovim.nix
+  ];
+
   services = {
     network-manager-applet.enable = true;
     blueman-applet.enable = true;
@@ -73,11 +79,6 @@ in {
     enable = true;
     source = ./configs/starship.toml;
   };
-
-  imports = [
-    ./sway.nix
-    ./shell.nix
-  ];
 
   home.packages = desktopPkgs ++ developmentPkgs ++ otherPkgs;
 

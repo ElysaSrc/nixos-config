@@ -181,9 +181,8 @@ in {
           "idle_inhibitor"
           "cpu"
           "memory"
-          "battery"
           "pulseaudio"
-          "backlight"
+          "battery"
           "clock"
           "tray"
         ];
@@ -192,7 +191,6 @@ in {
         "sway/workspaces" = sway_workspaces;
         "cpu" = cpu;
         "memory" = memory;
-        "backlight" = backlight;
         "bluetooth" = bluetooth;
         "idle_inhibitor" = idle_inhibitor;
         "network" = network;

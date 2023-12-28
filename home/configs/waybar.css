@@ -87,6 +87,18 @@ button:hover {
   margin-bottom: 4px;
 }
 
+#pulseaudio {
+  background-color: #83a598;
+}
+
+#cpu {
+  background-color: #8ec07c;
+}
+
+#memory {
+  background-color: #8ec07c;
+}
+
 .modules-left > widget:first-child > #workspaces {
   margin-left: 0;
 }
@@ -98,10 +110,6 @@ button:hover {
 #clock {
   font-size:14px;
   font-weight: bold;
-}
-
-#battery icon {
-  color: red;
 }
 
 #battery.charging, #battery.plugged {
@@ -148,6 +156,10 @@ label:focus {
   background-color: #eb4d4b;
 }
 
+#idle_inhibitor {
+  font-size: 18px;
+}
+
 #idle_inhibitor.activated {
   background-color: #eb4d4b;
   color: #d4be98;
@@ -165,4 +177,5 @@ label:focus {
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
   background-color: #eb4d4b;
+  color: #282828;
 }
